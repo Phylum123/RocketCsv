@@ -1,6 +1,6 @@
 
-![ef0e9467e5f94db7a843162ccf60a742 (3)](https://github.com/Phylum123/RocketCsv/assets/16786358/e7063a44-72fa-4931-baa6-3224886008db)
-# RocketCsv
+<img src="https://github.com/Phylum123/RocketCsv/assets/16786358/7691f5c7-94b4-4640-86a5-711e9e7ee061" width="210">
+
 A very fast CSV parser. Tons of features and a very easy to configure fluent API.
 
 # Basic Configuration
@@ -27,7 +27,7 @@ id, name, location, email
 
 ```
 
-You simply creating a csv map based off of CsvMapBase<T> and mark it with the [CsvMap] attribute.
+You simply create a csv map by inheriting from CsvMapBase<T> and marking it with the [CsvMap] attribute.
 
 ```
     [CsvMap]
@@ -45,11 +45,11 @@ You simply creating a csv map based off of CsvMapBase<T> and mark it with the [C
 # Basic Usage
 
 ```
-            using var mmf = MemoryMappedFile.CreateFromFile(@"CsvFiles\customers-100_TooFew.csv", FileMode.Open);
+            using var mmf = MemoryMappedFile.CreateFromFile(@"CsvFiles\users-100.csv", FileMode.Open);
             using var csvReader = new CsvReader(mmf.CreateViewStream());
 
             var userCsvMap = new UserCsvMap(csvReader);
 
-            await UserCsvMap.ReadHeaderRowAsync();
-            var users = await UserCsvMap.ReadDataRowsAsync();
+            await UserCsvMap.ReadHeaderRowAsync().ConfigureAwait(false);
+            var users = await UserCsvMap.ReadDataRowsAsync().ConfigureAwait(false);
 ```
