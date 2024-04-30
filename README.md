@@ -1,7 +1,9 @@
+
+![ef0e9467e5f94db7a843162ccf60a742 (3)](https://github.com/Phylum123/RocketCsv/assets/16786358/e7063a44-72fa-4931-baa6-3224886008db)
 # RocketCsv
 A very fast CSV parser. Tons of features and a very easy to configure fluent API.
 
-# Configuration
+# Basic Configuration
 You need to create a map from the class you want to populate and the format of the csv file. Give the class below:
 
 ```
@@ -40,7 +42,7 @@ You simply creating a csv map based off of CsvMapBase<T> and mark it with the [C
     }
 ```
 
-# Usage
+# Basic Usage
 
 ```
             using var mmf = MemoryMappedFile.CreateFromFile(@"CsvFiles\customers-100_TooFew.csv", FileMode.Open);
@@ -49,5 +51,5 @@ You simply creating a csv map based off of CsvMapBase<T> and mark it with the [C
             var userCsvMap = new UserCsvMap(csvReader);
 
             await UserCsvMap.ReadHeaderRowAsync();
-            var customers = await UserCsvMap.ReadDataRowsAsync();
+            var users = await UserCsvMap.ReadDataRowsAsync();
 ```
