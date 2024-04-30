@@ -1,10 +1,10 @@
 
 <img src="https://github.com/Phylum123/RocketCsv/assets/16786358/7691f5c7-94b4-4640-86a5-711e9e7ee061" width="210">
 
-A very fast CSV parser. Tons of features and a very easy to configure fluent API.
+A very fast Csv parser. Tons of features and a very easy to configure fluent API.
 
 # Basic Configuration
-You need to create a map from the class you want to populate and the format of the csv file. Give the class below:
+Given the class below:
 
 ```
 public class User
@@ -27,7 +27,7 @@ id, name, location, email
 
 ```
 
-You simply create a csv map by inheriting from CsvMapBase<T> and marking it with the [CsvMap] attribute.
+You simply create a csv map by inheriting from CsvMapBase<T> and marking it with the [CsvMap] attribute. You are now ready to read the Csv file.
 
 ```
     [CsvMap]
