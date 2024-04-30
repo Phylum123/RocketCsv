@@ -33,26 +33,26 @@ id, name, location, email
 You simply create a csv map by inheriting from CsvMapBase<T> and marking it with the [CsvMap] attribute. You are now ready to read the Csv file.
 
 ```
-    [CsvMap]
-    public partial class UserCsvMap : CsvMapBase<User>
+[CsvMap]
+public partial class UserCsvMap : CsvMapBase<User>
+{
+    //This method is never actually called, but is used to generate the CSV mapping code.
+    public void Configure(ICsvMapBuilder<User> builder)
     {
-        //This method is never actually called, but is used to generate the CSV mapping code.
-        public void Configure(ICsvMapBuilder<User> builder)
-        {
-            builder
-                .AutoMapByName(StringComparison.OrdinalIgnoreCase);
-        }
+        builder
+            .AutoMapByName(StringComparison.OrdinalIgnoreCase);
     }
+}
 ```
 
 # Basic Usage
 
 ```
-            using var mmf = MemoryMappedFile.CreateFromFile(@"CsvFiles\users-100.csv", FileMode.Open);
-            using var csvReader = new CsvReader(mmf.CreateViewStream());
+using var mmf = MemoryMappedFile.CreateFromFile(@"CsvFiles\users-100.csv", FileMode.Open);
+using var csvReader = new CsvReader(mmf.CreateViewStream());
 
-            var userCsvMap = new UserCsvMap(csvReader);
+var userCsvMap = new UserCsvMap(csvReader);
 
-            await UserCsvMap.ReadHeaderRowAsync().ConfigureAwait(false);
-            var users = await UserCsvMap.ReadDataRowsAsync().ConfigureAwait(false);
+await UserCsvMap.ReadHeaderRowAsync().ConfigureAwait(false);
+var users = await UserCsvMap.ReadDataRowsAsync().ConfigureAwait(false);
 ```
