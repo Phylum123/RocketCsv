@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="xunit" Version="2.7.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ByteSocket.RocketCsv.Core\ByteSocket.RocketCsv.Core.csproj" />
+    <ProjectReference Include="..\ByteSocket.RocketCsv.SourceGenerator.Shared\ByteSocket.RocketCsv.SourceGenerator.Shared.csproj" />
+    <ProjectReference Include="..\ByteSocket.RocketCsv.SourceGenerator\ByteSocket.RocketCsv.SourceGenerator.csproj" OutputItemType="Analyzer" PrivateAssets="All" />
+    <ProjectReference Include="..\ByteSocket.SourceGenHelpers\ByteSocket.SourceGenHelpers.csproj" OutputItemType="Analyzer" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="CsvFiles\customers-100_TooFew.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CsvFiles\customers-100.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <LangVersion>latest</LangVersion>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>ByteSocket</Authors>
+    <Company>ByteSocket</Company>
+    <Product>RocketCsv.SourceGenerator</Product>
+    <Description>The required source generrator for the rocket Csv Package.</Description>
+    <PackageId>RocketCsv.SourceGenerator</PackageId>
+    <Version>1.0.4</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ByteSocket.RocketCsv.SourceGenerator.Shared\ByteSocket.RocketCsv.SourceGenerator.Shared.csproj" OutputItemType="Analyzer" PrivateAssets="All" />
+    <ProjectReference Include="..\ByteSocket.SourceGenHelpers\ByteSocket.SourceGenHelpers.csproj" OutputItemType="Analyzer" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Pack the generator dll in the analyzers/dotnet/cs path -->
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+
+    <!-- Pack the shared dll in the analyzers/dotnet/cs path -->
+    <None Include="$(OutputPath)\ByteSocket.RocketCsv.SourceGenerator.Shared.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(OutputPath)\ByteSocket.SourceGenHelpers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+
+    <!-- Pack the shared dll in the lib\netstandard2.0 path -->
+    <None Include="$(OutputPath)\ByteSocket.RocketCsv.SourceGenerator.Shared.dll" Pack="true" PackagePath="lib\netstandard2.0" Visible="true" />
+  </ItemGroup>
+</Project>

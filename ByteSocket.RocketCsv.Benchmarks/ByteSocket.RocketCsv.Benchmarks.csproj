@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+    <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.12" />
+    <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.13.12" />
+    <PackageReference Include="Csv" Version="2.0.93" />
+    <PackageReference Include="CsvHelper" Version="31.0.3" />
+    <PackageReference Include="ServiceStack.Text" Version="8.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ByteSocket.RocketCsv.Core\ByteSocket.RocketCsv.Core.csproj" />
+    <ProjectReference Include="..\ByteSocket.RocketCsv.SourceGenerator.Shared\ByteSocket.RocketCsv.SourceGenerator.Shared.csproj" />
+    <ProjectReference Include="..\ByteSocket.RocketCsv.SourceGenerator\ByteSocket.RocketCsv.SourceGenerator.csproj" OutputItemType="Analyzer" PrivateAssets="All" />
+    <ProjectReference Include="..\ByteSocket.SourceGenHelpers\ByteSocket.SourceGenHelpers.csproj" OutputItemType="Analyzer" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="CsvFiles\customers-100.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CsvFiles\customers-1000.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CsvFiles\customers-10000.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CsvFiles\customers-100000.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CsvFiles\customers-100_TooFew.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
