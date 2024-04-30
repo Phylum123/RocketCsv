@@ -3,6 +3,9 @@
 
 A very fast Csv parser. Tons of features and a very easy to configure fluent API.
 
+# Installation
+Use Nuget to get references to packages: RocketCsv & RocketCsv.SourceGenerator
+
 # Basic Configuration
 Given the class below:
 
