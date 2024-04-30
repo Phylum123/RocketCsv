@@ -25,7 +25,7 @@ id, name, location, email
 
 ```
 
-You simply creating a csv map based off of CsvMapBase<T>
+You simply creating a csv map based off of CsvMapBase<T> and mark it with the [CsvMap] attribute.
 
 ```
     [CsvMap]
